@@ -1,7 +1,7 @@
 {
-  "name": "simple-typescript-npm-package",
-  "version": "1.0.0",
-  "description": "A very simple template for creating npm packages",
+  "name": "axios-service-base-ts",
+  "version": "0.1.0",
+  "description": "A base class for API services using Axios",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -10,13 +10,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Xkonti/simple-typescript-npm-package"
+    "url": "git+https://github.com/Xkonti/axios-service-base-ts"
   },
-  "keywords": ["typescript", "npm", "package", "template"],
+  "keywords": ["typescript", "axios", "api", "service", "class"],
   "author": "Beniamin (Xkonti) Dudek <xkonti@xkonti.tech>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Xkonti/simple-typescript-npm-package/issues"
+    "url": "https://github.com/Xkonti/axios-service-base-ts/issues"
   },
-  "homepage": "https://github.com/Xkonti/simple-typescript-npm-package#readme"
+  "homepage": "https://github.com/Xkonti/axios-service-base-ts#readme",
+  "dependencies": {
+    "axios": "^0.26.0",
+    "lodash": "^4.17.0",
+    "rusty-result-ts": "^0.1.0"
+  }
 }

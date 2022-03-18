@@ -1,3 +1,3 @@
-# Simple TS npm package template
+# Axios service base for TypeScript
 
-This is a **very** simple template for creating npm packages using typescript.
+A base class for API services using Axios.
