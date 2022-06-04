@@ -9,10 +9,10 @@ export class ApiServiceBase {
 
   /**
    * Creates a new service instance.
-   * @param path A path appended to the `urlBase`.
+   * @param path A base path for all requests this service will make. Defaults to `/api`.
    */
-  public constructor (path = '') {
-    this.urlBase += path || ''
+  public constructor (path?: string) {
+    this.urlBase = path ?? '/api'
   }
 
   /**
