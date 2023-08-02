@@ -48,3 +48,11 @@ if (result.isOk() && result.value != null) {
     console.log('Error:', result.error.errorMessage)
 }
 ```
+
+## Development
+
+- This project is using [pnpm](https://pnpm.io/) as a package manager.
+- Run `pnpm install` to install dependencies.
+- Run `pnpm test` to run tests once.
+- Run `pnpm test:watch` to run tests in watch mode.
+- Run `pnpm build` to build the project - this will also run the linter (EsLint).
