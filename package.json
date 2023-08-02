@@ -1,28 +1,61 @@
 {
   "name": "axios-service-base-ts",
-  "version": "0.2.0",
+  "private": false,
+  "version": "0.2.1",
   "description": "A base class for API services using Axios",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "build": "tsc",
-    "prepare": "npm run build"
-  },
+  "homepage": "https://github.com/Xkonti/axios-service-base-ts#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Xkonti/axios-service-base-ts"
   },
-  "keywords": ["typescript", "axios", "api", "service", "class"],
+  "keywords": [
+    "typescript",
+    "axios",
+    "api",
+    "service",
+    "class"
+  ],
   "author": "Beniamin (Xkonti) Dudek <xkonti@xkonti.tech>",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Xkonti/axios-service-base-ts/issues"
   },
-  "homepage": "https://github.com/Xkonti/axios-service-base-ts#readme",
+  "type": "module",
+  "main": "./dist/axios-service-base-ts.umd.cjs",
+  "module": "./dist/axios-service-base-ts.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/axios-service-base-ts.js",
+      "require": "./dist/axios-service-base-ts.umd.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc && vite build",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "coverage": "vitest run --coverage"
+  },
   "dependencies": {
-    "axios": "^0.26.0",
-    "lodash": "^4.17.0",
-    "rusty-result-ts": "^0.1.0",
-    "typescript": "^4.7.3"
+    "axios": "^1.4.0",
+    "lodash-es": "^4.17.21",
+    "rusty-result-ts": "^0.1.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.0",
+    "@types/lodash-es": "^4.17.8",
+    "@types/node": "^20.4.0",
+    "@typescript-eslint/eslint-plugin": "^6.2.0",
+    "@typescript-eslint/parser": "^6.2.0",
+    "eslint": "^8.46.0",
+    "express": "^4.17.0",
+    "typescript": "^5.1.6",
+    "vite": "^4.4.0",
+    "vite-plugin-dts": "^3.4.0",
+    "vite-plugin-eslint": "^1.8.0",
+    "vitest": "^0.33.0"
   }
 }
