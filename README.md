@@ -4,6 +4,12 @@ A base class for API services using Axios.
 
 ## Usage example
 
+Installation:
+
+```bash
+npm install axios-service-base-ts
+```
+
 Service declaration:
 
 ```typescript
