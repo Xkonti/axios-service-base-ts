@@ -1,7 +1,7 @@
 {
   "name": "axios-service-base-ts",
   "private": false,
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "A base class for API services using Axios",
   "homepage": "https://github.com/Xkonti/axios-service-base-ts#readme",
   "repository": {
@@ -42,7 +42,7 @@
   "dependencies": {
     "axios": "^1.4.0",
     "lodash-es": "^4.17.21",
-    "rusty-result-ts": "^0.1.0"
+    "neverthrow": "^6.0.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.0",
