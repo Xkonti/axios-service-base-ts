@@ -118,7 +118,7 @@ export class ApiServiceBase {
     try {
       const responseData: T = (await request(`${this.urlBase}${subPath}`, config))?.data as T;
       return ok(responseData);
-    } catch (e: unknown) {
+    } catch (e) {
       return err(new ApiError(e));
     }
   }
