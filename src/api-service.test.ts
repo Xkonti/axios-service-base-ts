@@ -1,4 +1,4 @@
-import { test, expect, beforeEach, afterEach } from 'vitest';
+import { test, expect, beforeEach, afterEach, assert } from 'vitest';
 import express from 'express';
 import {ApiError} from './api-error.ts';
 import {Result} from 'neverthrow';
@@ -52,14 +52,16 @@ test('should make a GET request', async () => {
   const service = new TestService();
   const result = await service.getHello();
 
-  if (result.isOk()) expect(result.value).toBe(helloMessage);
+  assert(result.isOk()); 
+  expect(result.value).toBe(helloMessage);
 });
 
 test('should fail on non-existent a GET endpoint', async () => {
   const service = new TestService();
   const result = await service.getNothing();
 
-  if (result.isErr()) expect(result.error.responseStatus).toBe(404);
+  assert(result.isErr());
+  expect(result.error.responseStatus).toBe(404);
 });
 
 // TODO: Test POST requests
