@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import { merge } from 'lodash-es';
-import { err, ok, Result } from 'rusty-result-ts';
+import { err, ok, Result } from 'neverthrow';
 
 import { ApiError } from './api-error';
 
@@ -36,7 +36,7 @@ export class ApiServiceBase {
   protected async get<T> (
     path = '',
     configOverrides: AxiosRequestConfig | undefined = undefined,
-  ): Promise<Result<T | null, ApiError>> {
+  ): Promise<Result<T, ApiError>> {
     return await this.requestResultWrapper<T>(path, configOverrides, (fullPath, config) => {
       return axios.get(fullPath, config);
     });
@@ -53,7 +53,7 @@ export class ApiServiceBase {
     path = '',
     data: unknown = undefined,
     configOverrides: AxiosRequestConfig | undefined = undefined,
-  ): Promise<Result<T | null, ApiError>> {
+  ): Promise<Result<T, ApiError>> {
     return await this.requestResultWrapper<T>(path, configOverrides, (fullPath, config) => {
       return axios.post(fullPath, data, config);
     });
@@ -70,7 +70,7 @@ export class ApiServiceBase {
     path = '',
     data: unknown = undefined,
     configOverrides: AxiosRequestConfig | undefined = undefined,
-  ): Promise<Result<T | null, ApiError>> {
+  ): Promise<Result<T, ApiError>> {
     return await this.requestResultWrapper<T>(path, configOverrides, (fullPath, config) => {
       return axios.put(fullPath, data, config);
     });
@@ -87,7 +87,7 @@ export class ApiServiceBase {
     path = '',
     data: unknown = undefined,
     configOverrides: AxiosRequestConfig | undefined = undefined,
-  ): Promise<Result<T | null, ApiError>> {
+  ): Promise<Result<T, ApiError>> {
     return await this.requestResultWrapper<T>(path, configOverrides, (fullPath, config) => {
       return axios.patch(fullPath, data, config);
     });
@@ -102,7 +102,7 @@ export class ApiServiceBase {
   protected async delete<T> (
     path = '',
     configOverrides: AxiosRequestConfig | undefined = undefined,
-  ): Promise<Result<T | null, ApiError>> {
+  ): Promise<Result<T, ApiError>> {
     return await this.requestResultWrapper<T>(path, configOverrides, (fullPath, config) => {
       return axios.delete(fullPath, config);
     });
@@ -112,11 +112,11 @@ export class ApiServiceBase {
     subPath: string,
     configOverrides: AxiosRequestConfig | undefined,
     request: (fullPath: string, config: AxiosRequestConfig | undefined) => Promise<{data: unknown} | null>,
-  ): Promise<Result<T | null, ApiError>> {
+  ): Promise<Result<T, ApiError>> {
     if (subPath.length > 0 && subPath[0] !== '/') subPath = `/${subPath}`;
     const config = merge(this.getConfig() || {}, configOverrides || {});
     try {
-      const responseData: T | null = (await request(`${this.urlBase}${subPath}`, config))?.data as T ?? null;
+      const responseData: T = (await request(`${this.urlBase}${subPath}`, config))?.data as T;
       return ok(responseData);
     } catch (e: unknown) {
       return err(new ApiError(e));
